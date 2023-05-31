@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Learning GSAP</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="gsap.min.js"></script>
+    <script src="MotionPathPlugin.min.js"></script>
+    <script src="MotionPathHelper.min.js"></script>
+    <script src="DrawSVGPlugin.min.js"></script>
+</head>
+<style type="text/css">
+    body {
+        background-color: #36393e;
+    }
+    .box {
+        display: block;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    #mainContainer {
+        position: absolute;
+        width: 300px;
+        height: 250px;
+    }
+    #motionPath {
+        overflow: visible;
+    }
+    #motionPath path {
+        stroke-width: 4;
+        stroke: white;
+    }
+
+</style>
+
+<body>
+    <div id="mainContainer">
+        <img class="pen" src="pencil.png" alt="pencil">
+        <svg viewBox="0 0 1080 720" version="1.1" xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink" id="motionPath">
+            <path id="path" fill="none" d="M123.99902,84.999 C130.99902,65.999 
+                173.99902,7.999 246.99902,6.999 321.99902,6.999 239.99902,787.999 143.99902,829.999 
+                141.61147,831.04345 144.59702,609.292 270.27402,378.594 373.10002,189.84 606.72602,
+                -27.256 613.82702,-16.983 633.28602,11.174 292.88102,424.97 262.48902,402.259 
+                239.99362,385.4488 356.85602,393.332 367.50802,398.142 510.98902,462.927 
+                480.08302,826.134 507.61902,826.139 529.92291,826.14377 893.35002,396.505 
+                813.74302,349.73862 775.66927,327.37165 726.80202,344.518 705.46388,355.90217 
+                695.19202,361.382 693.87302,362.014 693.87302,362.014 693.87302,362.014 698.93302,
+                360.428 695.18802,368.135 663.63402,433.065 819.605,838.926 834.37,842.929 869.4307,
+                852.43185 1180.817,349.544 1096.639,339.114 1080.623,337.129 1088.84,338.056 1086.008,
+                341.195 1057.787,372.459 1224.455,846.394 1234.611,831.335 1319.991,704.726 1444.759,
+                320.428 1443.999,339.999 1442.599,376.04865 1604.042,350.33 1692.613,342.281 1717.28605,
+                340.0385 1747.161,265.763 1724.808,258.493 1649.025,233.844 1710.361,808.866 1723.666,
+                808.431 1819.4588,805.2942 1823.637,373.354 1952.898,307.971 1977.778,295.386 2095.243,
+                276.426 2134.832,323.28 2229.8448,435.7264 2204.906,763.688 2293.12634,754.71635 
+                2344.015,749.541 2427.894,549.342 2427.999,548.999 "></path>
+        </svg>
+
+    </div>
+
+    <script type="text/javascript">
+        //only need to do this once
+        gsap.registerPlugin(MotionPathPlugin);
+        //drawing the path for the word Kevin
+        gsap.fromTo("#path",
+            { drawSVG: 0, stroke: "#42a6e0" },
+            { stroke: "#42a6e0", duration: 10, drawSVG: true });
+
+        //pencil image following path of the motion to simulate drawing
+        gsap.to(".pen", {
+            duration: 10,
+            motionPath: {
+                path: "#path",
+                align: "#path",
+                alignOrigin: [0, 1]
+            }
+        });
+
+            //Plugin to help you map your motion path, adding draggable points to create a path
+            //MotionPathHelper.create(".tow1");
+    </script>
+</body>
+
+</html>
