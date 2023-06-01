@@ -1,7 +1,7 @@
 # KevinDrawing
 SVG Cursive Drawing of Name
 
-# Drawn with SVGs
+# Drawn with SVG coordinates
 KevTransform.html
 
 ![](https://github.com/Kevin-Hy/KevinDrawing/blob/main/Kevin.gif)
