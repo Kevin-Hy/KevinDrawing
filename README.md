@@ -1,6 +1,8 @@
 # KevinDrawing
 SVG Cursive Drawing of Name
 
+**DrawSVGPlugin.min.js and MotionPathPlugin.min.js required**
+
 # Drawn with SVG coordinates
 KevTransform.html
 
